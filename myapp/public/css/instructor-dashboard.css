@@ -1,0 +1,219 @@
+/* Global Style */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fefefe;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  padding: 1rem 2rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.welcome-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background-color: #ff4e50;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Main Content */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Upload Form */
+.upload-form h2 {
+  color: #0072ff;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f7fbff;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #ff6a8f, #ff88af);
+}
+
+/* Content List */
+.content-list h2 {
+  margin-top: 3rem;
+  color: #0072ff;
+}
+
+.content-item {
+  border: 2px solid #e2efff;
+  background: #f4faff;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.content-item:hover {
+  transform: translateY(-3px);
+}
+
+.content-item h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.content-status {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: #00b894;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* Action Buttons */
+.content-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  text-decoration: none;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #fbc531;
+  color: #000;
+}
+
+.edit-btn:hover {
+  background-color: #e1a902;
+}
+
+.delete-btn {
+  background-color: #ff4e50;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  color: #aaa;
+  margin-top: 2rem;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  color: #0072ff;
+}
+
+.empty-state p {
+  margin: 0.3rem 0;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-success {
+  background: #00b894;
+}
+
+.toast-error {
+  background: #e74c3c;
+}

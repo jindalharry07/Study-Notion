@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem 2rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #f8a5c2; /* pink accent for learners */
+  }
+  
+  .back-link {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .back-link:hover {
+    color: #e67e22;
+  }
+  
+  .content-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #f8a5c2;
+    font-size: 2.5rem;
+  }
+  
+  p {
+    color: #dcdcdc;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .quiz-link {
+    color: #f39c12;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .quiz-link:hover {
+    color: #e67e22;
+  }
+  
+  embed {
+    margin-top: 1.5rem;
+    border-radius: 8px;
+  }
+  

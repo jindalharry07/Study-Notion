@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Learner Dashboard | StudyNotion</title>
+  <link rel="stylesheet" href="/css/learner-dashboard.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      👨‍🎓 StudyNotion
+    </div>
+    
+    <div class="welcome-text">Welcome, <%= learner.name %>!</div>
+    <!-- ✅ Fix: point logout link to /learner/logout -->
+    <a href="/learner/logout" class="logout-btn">Logout</a>
+  </header>
+
+  <main class="dashboard-container">
+    <h1 class="section-title">Explore Instructor Resources</h1>
+
+    <% if (contents.length === 0) { %>
+      <p class="no-content">No resources available right now. Please check back later.</p>
+    <% } else { %>
+      <div class="card-container">
+        <% contents.forEach(content => { %>
+          <div class="content-card">
+            <h3><%= content.title %></h3>
+            <p><%= content.description %></p>
+            <p class="instructor-name">By: <%= content.instructorId.name %></p>
+            <% if (content.fileUrl) { %>
+              <a href="<%= content.fileUrl %>" class="download-btn" download>Download</a>
+            <% } %>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>

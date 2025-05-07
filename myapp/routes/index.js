@@ -8,8 +8,17 @@ router.get("/", (req, res) => {
 });
 
 router.get("/choose", (req, res) => {
-  res.render("choose"); 
+  res.render("choose"); // create this view next
 });
 
+
+// // Redirects to instructor and learner (to be built)
+// router.get("/instructor", (req, res) => {
+//   res.send("Instructor login/signup page (Coming Soon)");
+// });
+
+// router.get("/learner", (req, res) => {
+//   res.send("Learner login/signup page (Coming Soon)");
+// });
 
 module.exports = router;

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instructor Dashboard | StudyNotion</title>
+  <link rel="stylesheet" href="/css/instructor-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="instructor-dashboard">
+  <!-- Modern navbar with new theme -->
+  <header class="navbar">
+    <div class="logo">StudyNotion</div>
+    <div class="welcome-text">Welcome back, <%= instructor.name %>!</div>
+    <a href="/instructor/logout" class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </header>
+  
+  <main>
+    <section class="upload-form">
+      <h2>Create New Content</h2>
+      <form action="/instructor/add-question" method="POST">
+        <div class="form-group">
+          <label for="title" class="form-label">Content Title</label>
+          <input type="text" id="title" name="title" placeholder="What's this content about?" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" name="description" placeholder="Provide a detailed description of your content..." required></textarea>
+        </div>
+        
+        <button type="submit">
+          <i class="fas fa-plus-circle"></i> Create Content
+        </button>
+      </form>
+    </section>
+    
+    <section class="content-list">
+      <h2>Your Content Library</h2>
+      
+      <% if (contents.length === 0) { %>
+        <div class="empty-state">
+          <i class="fas fa-folder-open"></i>
+          <p>Your content library is empty</p>
+          <p class="hint">Use the form above to create your first piece of content!</p>
+        </div>
+      <% } else { %>
+        <% contents.forEach(content => { %>
+          <div class="content-item">
+            <span class="content-status status-active">Active</span>
+            
+            <h3><%= content.title %></h3>
+            <p><%= content.description %></p>
+            
+            <div class="content-actions">
+              <a href="/instructor/edit/<%= content._id %>" class="edit-btn">
+                <i class="fas fa-pen"></i> Edit Content
+              </a>
+              <form action="/instructor/delete/<%= content._id %>" method="POST" onsubmit="return confirmDelete()">
+                <button type="submit" class="delete-btn">
+                  <i class="fas fa-trash"></i> Remove
+                </button>
+              </form>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </section>
+  </main>
+
+  <!-- Enhanced toast notification -->
+  <div id="toast" class="toast">
+    <i id="toast-icon" class="fas fa-check-circle"></i>
+    <span id="toast-message"></span>
+  </div>
+
+  <script>
+    // Enhanced toast notification function
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+      
+      // Set message and type
+      toastMessage.textContent = message;
+      toast.className = 'toast show';
+      
+      if (type === 'success') {
+        toast.classList.add('toast-success');
+        toastIcon.className = 'fas fa-check-circle';
+      } else if (type === 'error') {
+        toast.classList.add('toast-error');
+        toastIcon.className = 'fas fa-exclamation-circle';
+      }
+      
+      // Show toast
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
+    // Improved delete confirmation
+    function confirmDelete() {
+      return confirm('Are you sure you want to permanently delete this content? This action cannot be undone.');
+    }
+
+    // Check for success or error messages from the server
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const successMsg = urlParams.get('success');
+      const errorMsg = urlParams.get('error');
+      
+      if (successMsg) {
+        showToast(successMsg, 'success');
+      } else if (errorMsg) {
+        showToast(errorMsg, 'error');
+      }
+      
+      //Optional: Add this if you want to implement dark mode toggle later
+      
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+          document.body.classList.toggle('dark-theme');
+          localStorage.setItem('darkMode', document.body.classList.contains('dark-theme'));
+        });
+        
+        // Check for saved user preference
+        if (localStorage.getItem('darkMode') === 'true') {
+          document.body.classList.add('dark-theme');
+        }
+      }
+      
+    });
+  </script>
+</body>
+</html>

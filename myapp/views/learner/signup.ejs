@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/css/learner-auth.css">
+
+<div class="auth-container">
+  <h2>Signup as Learner</h2>
+  <form method="POST" action="/learner/signup">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" required />
+
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <a href="/learner/login">Already have an account? Login here.</a>
+</div>

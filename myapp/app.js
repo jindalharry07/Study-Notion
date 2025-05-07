@@ -9,8 +9,8 @@ const app = express();
 const port = 3000;
 
 const indexRoutes = require("./routes/index");
-// const instructorRoutes = require("./routes/instructor");
-// const learnerRoutes = require("./routes/learner");
+const instructorRoutes = require("./routes/instructor");
+const learnerRoutes = require("./routes/learner");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -27,8 +27,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", indexRoutes);
-// app.use("/instructor", instructorRoutes);
-// app.use("/learner", learnerRoutes); 
+app.use("/instructor", instructorRoutes);
+app.use("/learner", learnerRoutes); 
 
 mongoose.connect("mongodb://127.0.0.1:27017/studyNotion", 
   {
@@ -75,5 +75,5 @@ app.get("/logout", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`StudyNotion running at http://localhost:${port}`);
+  console.log(`🚀StudyNotion running at http://localhost:${port}`);
 });
