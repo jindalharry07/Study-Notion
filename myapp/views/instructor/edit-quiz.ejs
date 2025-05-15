@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= quiz.title %> | Quiz Edit</title>
+  <link rel="stylesheet" href="/css/editquiz.css">
+</head>
+<body class="kbc-theme">
+  <header class="kbc-header">
+    <h1>📄 <%= quiz.title %></h1>
+    <a href="/instructor/dashboard" class="kbc-btn">🏠 Back to Dashboard</a>
+  </header>
+
+  <main class="quiz-edit">
+    <h2>Edit Quiz</h2>
+
+    <form action="/instructor/quizzes/<%= quiz._id %>/edit" method="POST">
+      <label>Title:</label>
+      <input type="text" name="title" value="<%= quiz.title %>" required><br>
+
+      <label>Description:</label>
+      <textarea name="description" required><%= quiz.description %></textarea><br>
+
+      <button type="submit">Update Quiz</button>
+    </form>
+
+    <a href="/instructor/quizzes">⬅️ Back</a>
+  </main>
+</body>
+</html>

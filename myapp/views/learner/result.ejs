@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Result | StudyNotion</title>
+  <link rel="stylesheet" href="/css/learner-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="learner-dashboard">
+
+  <!-- ✅ Learner Navbar -->
+  <header class="navbar">
+    <div class="logo">StudyNotion</div>
+    <div class="welcome-text">Hello Learner!</div>
+    <a href="/learner/logout" class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </header>
+
+  <!-- ✅ Result Card -->
+  <main class="content-area">
+    <div class="card">
+      <h2>🎉 Quiz Result</h2>
+      <p>Total Score: <strong><%= result.score %></strong></p>
+      <a class="pdf-link" href="/learner/dashboard">⬅️ Back to Dashboard</a>
+    </div>
+  </main>
+
+</body>
+</html>

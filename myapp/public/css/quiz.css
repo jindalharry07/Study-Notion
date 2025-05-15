@@ -1,0 +1,104 @@
+body.kbc-theme {
+  background-color: #001f3f;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Header Section */
+.kbc-header {
+  background: linear-gradient(90deg, #0a043c, #03112e);
+  color: #f6c90e;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px #f6c90e55;
+}
+
+.kbc-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.kbc-header a.kbc-btn {
+  font-size: 0.95rem;
+  padding: 8px 14px;
+}
+
+/* Buttons */
+.kbc-btn {
+  background-color: #f6c90e;
+  color: #0a043c;
+  border: none;
+  padding: 10px 16px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.kbc-btn:hover {
+  background-color: #ffde59;
+  transform: scale(1.05);
+}
+
+/* Quiz Form Container */
+.quiz-form-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #021c35;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #f6c90e88;
+}
+
+.kbc-form label {
+  display: block;
+  margin-top: 1.2rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.kbc-form input,
+.kbc-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ffffff10;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.kbc-form input::placeholder,
+.kbc-form textarea::placeholder {
+  color: #bbbbbb;
+}
+
+.kbc-form input:focus,
+.kbc-form textarea:focus {
+  outline: 2px solid #f6c90e;
+  background-color: #ffffff15;
+}
+
+/* Submit Button */
+.kbc-form button {
+  margin-top: 2rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Optional: Smooth animation */
+.kbc-form,
+.kbc-btn,
+.kbc-header {
+  transition: all 0.3s ease;
+}

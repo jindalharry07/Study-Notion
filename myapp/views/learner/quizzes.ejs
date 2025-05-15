@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Quizzes | StudyNotion</title>
+  <link rel="stylesheet" href="/css/learner-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="learner-dashboard">
+
+  <!-- ✅ Learner Navbar -->
+  <header class="navbar">
+    <div class="logo">StudyNotion</div>
+    <div class="welcome-text">Hello Learner!</div>
+    <a href="/learner/logout" class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </header>
+
+  <main class="content-area">
+    <h2>📝 Available Quizzes</h2>
+
+    <% quizzes.forEach(quiz => { %>
+      <form class="card" action="/learner/quiz/<%= quiz._id %>/submit" method="POST">
+        <h3><%= quiz.title %></h3>
+        <p><%= quiz.description %></p>
+
+        <% quiz.questions.forEach((q, i) => { %>
+          <p><strong><%= i + 1 %>. <%= q.question %></strong></p>
+          <% q.options.forEach(opt => { %>
+            <label>
+              <input type="radio" name="q<%= i %>" value="<%= opt %>" required> <%= opt %>
+            </label><br>
+          <% }) %>
+        <% }) %>
+
+        <button type="submit" class="quiz-submit">🚀 Submit Quiz</button>
+      </form>
+    <% }) %>
+  </main>
+
+</body>
+</html>

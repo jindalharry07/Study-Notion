@@ -85,3 +85,11 @@ body {
 .auth-container a:hover {
   text-decoration: underline;
 }
+.success-message {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+}

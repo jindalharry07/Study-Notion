@@ -1,4 +1,8 @@
 /* Global Style */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -51,6 +55,44 @@ main {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Section Layout */
+.manage-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.upload-pdf,
+.manage-quiz {
+  flex: 1 1 100%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .upload-pdf,
+  .manage-quiz {
+    flex: 1 1 45%;
+  }
+}
+
+/* Buttons */
+.upload-pdf-btn,
+.manage-quiz-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.upload-pdf-btn:hover,
+.manage-quiz-btn:hover {
+  background-color: #0056b3;
 }
 
 /* Upload Form */
@@ -216,4 +258,13 @@ button[type="submit"]:hover {
 
 .toast-error {
   background: #e74c3c;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid #ffb347;
+  outline-offset: 2px;
 }

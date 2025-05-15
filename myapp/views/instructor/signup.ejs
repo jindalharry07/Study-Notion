@@ -6,11 +6,64 @@
   <title>Instructor Signup | StudyNotion</title>
   <link rel="stylesheet" href="/css/instructor-auth.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Style for the modal */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    /* Add custom color for the success message */
+    .modal-content h3 {
+      color: #4CAF50; /* Green color for success message */
+    }
+  </style>
 </head>
 <body>
   <div class="auth-container">
-    <h2><i class="fas fa-user-plus"></i> Instructor Signup</h2>
+    <h2><i class="fas fa-user"></i> Instructor Signup</h2>
 
+    <!-- Signup Form -->
     <form action="/instructor/signup" method="POST">
       <input type="text" name="name" placeholder="Full Name" required />
       <input type="email" name="email" placeholder="Email Address" required />
@@ -20,5 +73,35 @@
 
     <p>Already have an account? <a href="/instructor/login">Login here</a></p>
   </div>
+
+  <!-- Success Modal -->
+  <% if (req.query.success) { %>
+    <div class="modal" id="successModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>You have successfully registered!</h3>
+        <p>Now you can log in to your account.</p>
+        <a href="/instructor/login" class="btn">Login</a>
+      </div>
+    </div>
+
+    <script>
+      // Show the modal
+      var modal = document.getElementById('successModal');
+      modal.style.display = "block";
+
+      // Close the modal when the close button is clicked
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Close the modal if the user clicks anywhere outside of the modal
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+  <% } %>
 </body>
 </html>

@@ -1,19 +1,112 @@
-<link rel="stylesheet" href="/css/learner-auth.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learner Signup | StudyNotion</title>
+  <link rel="stylesheet" href="/css/learner-auth.css">
+  <style>
+    /* Style for the modal */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    /* Add custom color for the success message */
+    .modal-content h3 {
+      color: #4CAF50; /* Green color for success message */
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Signup as Learner</h2>
 
-<div class="auth-container">
-  <h2>Signup as Learner</h2>
-  <form method="POST" action="/learner/signup">
-    <label for="name">Name:</label>
-    <input type="text" name="name" required />
+    <!-- Signup Form -->
+    <form action="/learner/signup" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" required />
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" required />
+      <label for="email">Email:</label>
+      <input type="email" name="email" required />
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" required />
+      <label for="password">Password:</label>
+      <input type="password" name="password" required />
 
-    <button type="submit">Sign Up</button>
-  </form>
+      <button type="submit">Sign Up</button>
+    </form>
 
-  <a href="/learner/login">Already have an account? Login here.</a>
-</div>
+    <p>Already have an account? <a href="/learner/login">Login here</a></p>
+  </div>
+
+  <!-- Success Modal -->
+  <% if (success) { %>
+    <div class="modal" id="successModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>You have successfully registered!</h3>
+        <p>Now you can log in to your account.</p>
+        <a href="/learner/login" class="btn">Login</a>
+      </div>
+    </div>
+
+    <script>
+      // Show the modal
+      var modal = document.getElementById('successModal');
+      modal.style.display = "block";
+
+      // Close the modal when the close button is clicked
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Close the modal if the user clicks anywhere outside of the modal
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+  <% } %>
+</body>
+</html>

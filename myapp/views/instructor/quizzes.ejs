@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Quiz | StudyNotion</title>
+  <link rel="stylesheet" href="/css/quiz.css" />
+</head>
+<body class="kbc-theme">
+  <!-- Header -->
+  <header class="kbc-header">
+    <h1>🧠 Create New Quiz</h1>
+    <a href="/instructor/dashboard" class="kbc-btn">🏠 Back to Dashboard</a>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <!-- Quiz Creation Form -->
+    <section class="quiz-form-container">
+      <form action="/instructor/quizzes/new" method="POST" class="kbc-form">
+        <label>Quiz Title</label>
+        <input type="text" name="title" required placeholder="Enter quiz title" />
+
+        <label>Description</label>
+        <textarea name="description" required placeholder="Write a short description..."></textarea>
+
+        <button type="submit" class="kbc-btn">🎯 Create Quiz</button>
+      </form>
+    </section>
+
+    <!-- Quiz Listing -->
+    <section class="quiz-grid">
+      <% if (quizzes && quizzes.length > 0) { %>
+        <% quizzes.forEach(quiz => { %>
+          <div class="quiz-card">
+            <h3><%= quiz.title %></h3>
+            <p class="q-count">📝 <%= quiz.description %></p>
+            <a href="/instructor/quizzes/<%= quiz._id %>" class="kbc-btn">👁 View</a>
+            <a href="/instructor/quizzes/<%= quiz._id %>/edit" class="kbc-btn">✏️ Edit</a>
+            <form action="/instructor/quizzes/<%= quiz._id %>/delete" method="POST" style="display:inline;">
+              <button type="submit" class="kbc-btn">🗑️ Delete</button>
+            </form>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p class="kbc-empty">No quizzes created yet.</p>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>

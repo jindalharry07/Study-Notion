@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= instructor.name %>'s Content | StudyNotion</title>
+  <link rel="stylesheet" href="/css/instructor-content.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">📘 StudyNotion</div>
+    <div class="title"><%= instructor.name %>'s Content</div>
+    <a href="/learner/dashboard" class="back-btn">⬅ Back to Dashboard</a>
+  </header>
+
+  <main class="content-area">
+ <!-- Text Posts -->
+<section>
+  <h2>📝 Posts</h2>
+  <% if (resources.length === 0) { %>
+    <p>No posts found.</p>
+  <% } else { %>
+    <% resources.forEach(r => { %>
+      <div class="card">
+        <h3><%= r.title %></h3> <!-- Showing title of the content -->
+        <p><%= r.description %></p> <!-- Showing description of the content -->
+        <% if (r.createdAt) { %>
+          <small>Posted on <%= new Date(r.createdAt).toLocaleDateString() %></small>
+        <% } %>
+      </div>
+    <% }) %>
+  <% } %>
+</section>
+
+
+
+<!-- PDFs Section -->
+<section>
+  <h2>📄 PDFs</h2>
+  <% if (pdfs.length === 0) { %>
+    <p>No PDFs uploaded.</p>
+  <% } else { %>
+    <% pdfs.forEach(p => { %>
+      <div class="card">
+        <a href="/<%= p.filePath %>" target="_blank" download>
+          <i class="fas fa-file-pdf"></i> <%= p.title %>
+        </a>
+      </div>
+    <% }) %>
+  <% } %>
+</section>
+
+
+
+
+
+
+    <!-- Quizzes -->
+    <section>
+      <h2>🧠 Quizzes</h2>
+      <% if (quizzes.length === 0) { %>
+        <p>No quizzes available.</p>
+      <% } else { %>
+        <% quizzes.forEach(qz => { %>
+          <div class="card">
+            <h3><%= qz.title %></h3>
+            <p><%= qz.description %></p>
+            <a href="/learner/quizzes" class="quiz-link">Take Quiz</a>
+            <!-- OR: <a href="/learner/quiz/<%= qz._id %>" class="quiz-link">Start Quiz</a> -->
+          </div>
+        <% }) %>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>

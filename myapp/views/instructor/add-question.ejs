@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Question | StudyNotion</title>
+  <link rel="stylesheet" href="/css/quiz.css" />
+</head>
+<body class="kbc-theme">
+  <header class="kbc-header">
+    <h1>➕ Add Question to Quiz</h1>
+    <a href="/instructor/quizzes" class="kbc-btn">📚 Back to Quizzes</a>
+  </header>
+
+  <main class="quiz-form-container">
+    <form action="/instructor/quizzes/<%= quizId %>/add-question" method="POST" class="kbc-form">
+      <label>Question</label>
+      <textarea name="questionText" required placeholder="Enter your question here..."></textarea>
+
+      <label>Option 1</label>
+      <input type="text" name="option1" required />
+
+      <label>Option 2</label>
+      <input type="text" name="option2" required />
+
+      <label>Option 3</label>
+      <input type="text" name="option3" required />
+
+      <label>Option 4</label>
+      <input type="text" name="option4" required />
+
+      <label>Correct Answer Index (0-3)</label>
+      <input type="number" name="correctAnswerIndex" min="0" max="3" required />
+
+      <button type="submit" class="kbc-btn">✅ Add Question</button>
+    </form>
+  </main>
+</body>
+</html>

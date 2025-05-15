@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Learner Dashboard | StudyNotion</title>
+  <link rel="stylesheet" href="/css/learner-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="learner-dashboard">
+  <header class="navbar">
+    <div class="logo">📘 StudyNotion</div>
+    <div class="welcome-text">Welcome, <%= learner.name %>!</div>
+    <a href="/learner/logout" class="logout-btn">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </a>
+  </header>
+
+  <main class="content-area">
+    <section>
+      <h2>📚 Available Content</h2>
+      <% if (instructors.length === 0) { %>
+        <p>No instructors found.</p>
+      <% } else { %>
+        <% instructors.forEach(instr => { %>
+          <div class="card">
+            <p>
+              <a href="/learner/instructor/<%= instr._id %>/contents">
+                👨‍🏫 <%= instr.name %>
+              </a>
+            </p>
+          </div>
+        <% }) %>
+      <% } %>
+    </section>
+  </main>
+</body>
+</html>
