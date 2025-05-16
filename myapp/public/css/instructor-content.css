@@ -1,4 +1,4 @@
-body {
+body.instructor-content-page {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f7f9fc;
   color: #333;
@@ -6,70 +6,106 @@ body {
   padding: 0;
 }
 
+/* Navbar */
 .navbar {
-  background-color: #4a90e2;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
   color: white;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
+  font-size: 1.6rem;
   font-weight: bold;
-  font-size: 1.2rem;
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .back-btn {
   color: white;
   text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  background-color: #0056b3;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
 .back-btn:hover {
-  text-decoration: underline;
+  background-color: #003f88;
 }
 
+/* Main Area */
 .content-area {
-  padding: 30px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* Headings */
 h2 {
-  color: #333;
-  margin-bottom: 15px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #0072ff;
 }
 
-.card {
-  background-color: white;
-  padding: 15px 20px;
-  border-radius: 10px;
-  margin-bottom: 15px;
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card, .quiz-card {
+  background: #eef5ff;
+  border: 2px solid #cce0ff;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
 }
 
-.card a {
-  color: #4a90e2;
+.card:hover, .quiz-card:hover {
+  transform: translateY(-3px);
+}
+
+.card a, .quiz-card a {
+  color: #0072ff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.card a:hover {
-  text-decoration: underline;
-}
-
-.quiz-link {
+/* Quiz Button */
+.take-quiz-btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background-color: #4a90e2;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
+  margin-top: 0.75rem;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #4a90e2, #007BFF);
+  color: white !important;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-.quiz-link:hover {
-  background-color: #3a78c2;
+.take-quiz-btn:hover {
+  background: linear-gradient(90deg, #3a78c2, #0056b3);
+  transform: translateY(-2px);
+}
+
+/* Empty State */
+.empty-state {
+  color: #999;
+  font-style: italic;
+  margin-bottom: 2rem;
 }

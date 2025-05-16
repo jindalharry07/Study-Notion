@@ -1,4 +1,3 @@
-// controllers/contentController.js
 const Content = require("../models/Content");
 
 exports.getDashboard = async (req, res) => {

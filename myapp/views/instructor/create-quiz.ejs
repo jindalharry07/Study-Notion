@@ -13,11 +13,11 @@
 
   <main class="quiz-form-container">
     <form action="/instructor/quizzes/new" method="POST" class="kbc-form">
-      <label>Quiz Title</label>
-      <input type="text" name="title" required placeholder="Enter quiz title" />
+      <label for="title">Quiz Title</label>
+      <input type="text" id="title" name="title" required placeholder="Enter quiz title" />
 
-      <label>Description</label>
-      <textarea name="description" required placeholder="Write a short description..."></textarea>
+      <label for="description">Description</label>
+      <textarea id="description" name="description" required placeholder="Write a short description..."></textarea>
 
       <button type="submit" class="kbc-btn">🎯 Create Quiz</button>
     </form>

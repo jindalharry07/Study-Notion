@@ -16,8 +16,9 @@ const quizRoutes = require('./routes/quiz.routes');
 const learnerRoutes = require('./routes/learner.routes');
 
 // Middleware
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public"))); // for CSS/JS
+app.use(express.static(path.join(__dirname, "public"))); // for CSS
 app.set("view engine", "ejs");
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // ⬅️ Add this line
 
@@ -102,5 +103,5 @@ app.get("/logout", (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`🚀StudyNotion running at http://localhost:${port}`);
+  console.log(`StudyNotion running at http://localhost:${port}`);
 });

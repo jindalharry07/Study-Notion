@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= quiz.title %> | StudyNotion</title>
+  <link rel="stylesheet" href="/css/learner-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .quiz-intro {
+      margin-bottom: 2rem;
+      background: #f0f6ff;
+      border: 1px solid #cce0ff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+    }
+
+    .quiz-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #007bff;
+    }
+
+    .quiz-description {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .question-block {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .quiz-submit {
+      padding: 12px 24px;
+      font-size: 1rem;
+      background: linear-gradient(90deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .quiz-submit:hover {
+      background: linear-gradient(90deg, #0056b3, #004099);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body class="learner-dashboard">
+
+  <!-- ✅ Learner Navbar -->
+  <header class="navbar">
+    <div class="logo">StudyNotion</div>
+    <div class="welcome-text">Hello Learner!</div>
+    <a href="/learner/dashboard" class="logout-btn">
+  <i class="fas fa-arrow-left"></i> Back to Dashboard
+</a>
+  </header>
+
+  <main class="content-area">
+    <!-- ✅ Quiz Intro Section -->
+    <section class="quiz-intro">
+    <h1 class="quiz-title">🧠 <%= quiz.title %></h1>
+      <p class="quiz-description"><%= quiz.description %></p>
+    </section>
+
+    <!-- ✅ Quiz Questions -->
+    <form action="/learner/quiz/<%= quiz._id %>/submit" method="POST">
+      <% quiz.questions.forEach((q, i) => { %>
+        <div class="question-block">
+          <p><strong><%= i + 1 %>. <%= q.questionText %></strong></p>
+
+          <% if (Array.isArray(q.options) && q.options.length === 4) { %>
+            <% q.options.forEach((opt, index) => { %>
+              <label>
+                <input type="radio" name="q<%= i %>" value="<%= index %>" required>
+                <%= opt %>
+              </label><br>
+            <% }) %>
+          <% } else { %>
+            <p style="color: red;">⚠️ Options missing or not valid for this question.</p>
+          <% } %>
+        </div>
+      <% }) %>
+
+      <button type="submit" class="quiz-submit">Submit Quiz</button>
+    </form>
+  </main>
+
+</body>
+</html>

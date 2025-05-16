@@ -1,9 +1,9 @@
-// controllers/instructorController.js
 const Instructor = require("../models/Instructor");
 
 // Show signup form
 exports.getSignup = (req, res) => {
-  res.render("instructor/signup");
+ res.render("instructor/signup", { success: req.query.success });
+
 };
 
 // Show login form
@@ -11,7 +11,7 @@ exports.getLogin = (req, res) => {
   res.render("instructor/login");
 };
 
-// Handle signup form submission
+
 // POST: Instructor signup logic
 exports.postSignup = async (req, res) => {
   try {

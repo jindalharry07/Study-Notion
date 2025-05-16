@@ -28,6 +28,9 @@ router.get("/instructor/:instructorId/contents", learnerController.getInstructor
 // List all available quizzes
 router.get("/quizzes", learnerController.quizList);
 
+// Show a particular quiz with its questions
+router.get("/quiz/:quizId", learnerController.showQuiz);
+
 // Submit a quiz
 router.post("/quiz/:quizId/submit", learnerController.submitQuiz);
 

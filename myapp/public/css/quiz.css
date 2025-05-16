@@ -51,31 +51,36 @@ body.kbc-theme {
 
 /* Quiz Form Container */
 .quiz-form-container {
-  max-width: 600px;
+  max-width: 640px;
   margin: 3rem auto;
   background: #021c35;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   border-radius: 10px;
   box-shadow: 0 0 15px #f6c90e88;
 }
 
+.kbc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
 .kbc-form label {
-  display: block;
-  margin-top: 1.2rem;
   font-weight: 600;
   font-size: 1rem;
+  padding-left: 0.2rem;
 }
 
 .kbc-form input,
 .kbc-form textarea {
   width: 100%;
-  padding: 12px;
-  margin-top: 6px;
+  padding: 14px 16px;
   border: none;
   border-radius: 6px;
   background-color: #ffffff10;
   color: #fff;
   font-size: 0.95rem;
+  box-sizing: border-box;
 }
 
 .kbc-form input::placeholder,
@@ -91,7 +96,7 @@ body.kbc-theme {
 
 /* Submit Button */
 .kbc-form button {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 100%;
   font-size: 1rem;
 }
@@ -101,4 +106,12 @@ body.kbc-theme {
 .kbc-btn,
 .kbc-header {
   transition: all 0.3s ease;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .quiz-form-container {
+    margin: 2rem 1rem;
+    padding: 2rem 1.5rem;
+  }
 }

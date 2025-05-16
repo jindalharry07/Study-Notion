@@ -75,33 +75,32 @@
   </div>
 
   <!-- Success Modal -->
-  <% if (req.query.success) { %>
-    <div class="modal" id="successModal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3>You have successfully registered!</h3>
-        <p>Now you can log in to your account.</p>
-        <a href="/instructor/login" class="btn">Login</a>
-      </div>
+<% if (success) { %>
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>You have successfully registered!</h3>
+      <p>Now you can log in to your account.</p>
+      <a href="/instructor/login" class="btn">Login</a>
     </div>
+  </div>
 
-    <script>
-      // Show the modal
-      var modal = document.getElementById('successModal');
-      modal.style.display = "block";
+  <script>
+    // Show the modal
+    var modal = document.getElementById('successModal');
+    modal.style.display = "block";
 
-      // Close the modal when the close button is clicked
-      function closeModal() {
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
         modal.style.display = "none";
       }
+    }
+  </script>
+<% } %>
 
-      // Close the modal if the user clicks anywhere outside of the modal
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-    </script>
-  <% } %>
 </body>
 </html>
