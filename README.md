@@ -31,30 +31,57 @@
 ## 📁 Folder Structure
 
 study-notion/
-├── client/ # Frontend (React + Tailwind CSS)
-│ ├── public/
-│ └── src/
-│ ├── assets/ # Static images and logos
-│ ├── components/ # Reusable React components
-│ ├── pages/ # Route-based page components
-│ ├── services/ # API call functions
-│ ├── context/ # Global state and auth context
-│ ├── utils/ # Utility functions (e.g., token handling)
-│ ├── App.js
-│ └── main.jsx
+├── client/                             # Frontend (React + Tailwind CSS)
+│   ├── public/
+│   └── src/
+│       ├── assets/                     # Static images and logos
+│       ├── components/                 # Reusable React components
+│       ├── pages/                      # Route-based page components
+│       ├── services/                   # API call functions
+│       ├── context/                    # Global state and auth context
+│       ├── utils/                      # Utility functions (e.g., token handling)
+│       ├── App.js
+│       └── main.jsx
 
-├── server/ # Backend (Express + MongoDB)
-│ ├── config/ # DB connection and environment config
-│ ├── controllers/ # Logic for routes (auth, courses, admin)
-│ ├── models/ # Mongoose schemas (User, Course, Module)
-│ ├── routes/ # Route definitions
-│ ├── middlewares/ # Auth, role-check, error handling
-│ ├── utils/ # Token, mail, file-upload helpers
-│ └── server.js # Entry point
-
-├── .env # Environment variables
-├── README.md # Project documentation
-├── package.json # Project metadata and dependencies
+├── server/                             # Backend (Express + MongoDB)
+│   ├── config/                         # DB connection and environment config
+│   ├── controllers/                    # Logic for routes
+│   │   ├── contentController.js
+│   │   ├── instructorController.js
+│   │   ├── learner.controller.js
+│   │   ├── learnerController.js
+│   │   ├── pdfController.js
+│   │   └── quiz.controller.js
+│   ├── models/                         # Mongoose schemas
+│   ├── routes/                         # Route definitions
+│   │   ├── index.js
+│   │   ├── instructor.js
+│   │   ├── learner.js
+│   │   ├── learner.routes.js
+│   │   ├── pdfRoutes.js
+│   │   ├── quiz.routes.js
+│   │   └── users.js
+│   ├── uploads/                        # File uploads (PDFs, media)
+│   ├── views/                          # EJS templates
+│   │   ├── instructor/
+│   │   │   ├── contentList.ejs
+│   │   │   ├── dashboard.ejs
+│   │   │   ├── instructor-content.ejs
+│   │   │   ├── viewContent.ejs
+│   │   └── learner/
+│   │       ├── learner-dashboard.ejs
+│   │       ├── login.ejs
+│   │       ├── quiz-details.ejs
+│   │       ├── quizzes.ejs
+│   │       ├── result.ejs
+│   │       ├── signup.ejs
+│   ├── views/pdf/
+│   │   ├── choose.ejs
+│   │   └── welcome.ejs
+│   ├── app.js                          # Server entry point
+│   ├── package.json
+│   ├── package-lock.json
+│   └── README.md
 
 
 
@@ -81,7 +108,7 @@ study-notion/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/study-notion.git
+git clone https://github.com/jindalharry07/Study-Notion.git
 cd study-notion
 
 
